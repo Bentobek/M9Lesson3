@@ -8,6 +8,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val adapter = CharactersAdapter()
 
 
     private val viewModel: MainViewModel by viewModel()
@@ -16,17 +17,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
-            btnIncrement.setOnClickListener {
-                viewModel.increment()
+            binding.rvLotti.adapter = adapter
+
+            viewModel.characters.observe(this@MainActivity) {
+                adapter.submitList(it)
             }
-            btnDecrement.setOnClickListener {
-                viewModel.decrement()
-            }
+
+
         }
-        viewModel.uiCountData.observe(this){ data ->
-            binding.tvCount.text = "${data}"
-            binding.btnIncrement.text = data.operationType
-    }
+//            btnIncrement.setOnClickListener {
+//                viewModel.increment()
+//            }
+//            btnDecrement.setOnClickListener {
+//                viewModel.decrement()
+//            }
+//
+//        }
+//        viewModel.uiCountData.observe(this){ data ->
+//            binding.tvCount.text = "${data}"
+//            binding.btnIncrement.text = data.operationType
+//    }
     }
 
 }

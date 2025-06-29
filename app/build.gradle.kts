@@ -37,8 +37,9 @@ android {
         viewBinding = true
     }
 }
-
+val  nav_version = "2.9.0"
 dependencies {
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,4 +56,8 @@ dependencies {
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    //    NavGraph
+    implementation ("androidx.navigation:navigation-fragment:$nav_version")
+    implementation (libs.androidx.navigation.ui)
 }
