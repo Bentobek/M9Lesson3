@@ -3,16 +3,13 @@ package com.example.m5lesson1.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.m5lesson1.domain.model.Characters
 import com.example.m5lesson1.domain.usecase.DecrementUseCase
-import com.example.m5lesson1.domain.usecase.GetCharactersUseCase
 import com.example.m5lesson1.domain.usecase.GetCountUseCase
 import com.example.m5lesson1.domain.usecase.IncrementUseCase
 import com.example.m5lesson1.presentation.mapper.toUi
 import com.example.m5lesson1.presentation.model.UiCount
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 @Suppress("UNCHECKED_CAST")
 class MainViewModel(

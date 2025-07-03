@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val adapter = CharactersAdapter()
 
 
-    private val viewModel: MainViewModel by viewModels()
+//    private val viewModel: MainViewModel by viewModels()
     private val viewModel2: CharacterViewmodel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
