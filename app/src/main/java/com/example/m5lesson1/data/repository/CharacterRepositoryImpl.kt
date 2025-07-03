@@ -1,8 +1,5 @@
 package com.example.m5lesson1.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
-import com.example.m5lesson1.data.mapping.toDomain
 import com.example.m5lesson1.data.model.CharacterDto
 import com.example.m5lesson1.data.remote.ApiService
 import com.example.m5lesson1.domain.repository.CharacterRepository
@@ -20,7 +17,7 @@ class CharacterRepositoryImpl(
         return flow {
             try {
             val response = api.getCharacters()
-            if (response.results?.isNotEmpty()==true) {
+            if (response.results.isNotEmpty() ==true) {
                 emit(response.results)
             }
                 }catch (e: Exception){
