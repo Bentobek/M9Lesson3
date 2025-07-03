@@ -11,19 +11,20 @@ import com.example.m5lesson1.domain.usecase.GetCountUseCase
 import com.example.m5lesson1.domain.usecase.IncrementUseCase
 import com.example.m5lesson1.presentation.mapper.toUi
 import com.example.m5lesson1.presentation.model.UiCount
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
+@Suppress("UNCHECKED_CAST")
 class MainViewModel(
     private val getCountUseCase: GetCountUseCase,
     private val incrementUseCase: IncrementUseCase,
     private val decrementUseCase: DecrementUseCase,
-    private val getCharactersUseCase: GetCharactersUseCase
     ): ViewModel() {
 
     private val _uiCountData = MutableLiveData<UiCount>()
     val uiCountData: LiveData<UiCount> = _uiCountData
     private val _characters = MutableLiveData<List<Characters>>()
-    val characters: LiveData<List<Characters>> = _characters
+    val characters: Flow<List<Characters>> = _characters as Flow<List<Characters>>
 
 
 

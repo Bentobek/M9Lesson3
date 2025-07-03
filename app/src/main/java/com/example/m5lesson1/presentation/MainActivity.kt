@@ -1,17 +1,20 @@
 package com.example.m5lesson1.presentation
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.m5lesson1.databinding.ActivityMainBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val adapter = CharactersAdapter()
 
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: MainViewModel by viewModels()
+    private val viewModel2: CharacterViewmodel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +22,15 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             binding.rvLotti.adapter = adapter
 
-            viewModel.characters.observe(this@MainActivity) {
-                adapter.submitList(it)
+            lifecycleScope.launchWhenStarted {
+                viewModel2.characters.collect { list ->
+                    adapter.submitList(list)
+                }
             }
+
+            viewModel2.loadCharacters()
+        }
+
 
 
         }
@@ -39,4 +48,3 @@ class MainActivity : AppCompatActivity() {
 //    }
     }
 
-}

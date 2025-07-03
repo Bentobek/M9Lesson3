@@ -5,8 +5,6 @@ import com.example.m5lesson1.domain.model.Characters
 
 fun CharacterDto.toDomain(): Characters {
     return Characters(
-        id = id,
-        image = image,
-        name = name,
+        image, name, dead, location, seen, id,
     )
 }
